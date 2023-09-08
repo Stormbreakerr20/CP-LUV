@@ -1,5 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
+
 
 #define LIMIT 1000000
 long long i, j;
@@ -25,7 +24,14 @@ int check_perfect_square(long long n){
     }
 }
 
-// moduli : 450B:
+//////////////////////////////////////////////////////////////////// moduli : 450B:
+int pow(int a,int b,long long m){
+    if(b==0) return 1;
+    if(b==1) return a;
+
+    if(b&1) return ((a%m)*(pow(((a%m)*(a%m))%m,b/2,m)%m))%m;
+    else return pow(((a%m)*(a%m))%m,b/2,m)%m;
+}
 
 
 
