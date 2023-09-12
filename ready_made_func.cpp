@@ -1,4 +1,15 @@
 
+#define all(x) (x).begin(), (x).end()
+#define make_unique(x) sort(all((x))); (x).resize(unique(all((x))) - (x).begin())
+
+// use sort(all(a));
+
+// inp
+inline int nxt() {
+	int x;
+	cin >> x;
+	return x;
+}
 
 #define LIMIT 1000000
 long long i, j;
@@ -34,7 +45,12 @@ int pow(int a,int b,long long m){
 }
 
 
-
+ll GCD(ll a, ll b)
+{
+    if (a == 0)
+        return b;
+    return GCD(b % a, a);
+}
 
 
 
