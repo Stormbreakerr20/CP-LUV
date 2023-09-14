@@ -52,7 +52,41 @@ ll GCD(ll a, ll b)
     return GCD(b % a, a);
 }
 
+void Merge(vector<ll> &diff, ll s,ll e,ll &ans){
 
+    ll mid = s + (e-s)/2;
+    vector<ll> a,b;
+    for(ll i = s; i<=mid;i++) a.push_back(diff[i]);
+    for(ll i = mid+1; i<=e;i++) b.push_back(diff[i]);
+    
+    ll ap = 0,bp = 0;
+
+    ll i=a.size()-1,j = 0;
+    while(j<b.size()){
+        while(i>=0 && a[i] > -b[j]) i--;
+        ans+= a.size() - 1 - i;
+        j++;
+    }
+
+    while(ap < a.size() && bp < b.size()){
+        if(a[ap]<b[bp]) diff[s++] = a[ap++];
+        else diff[s++] = b[bp++];
+    }
+
+    while(ap< a.size()) diff[s++] = a[ap++];
+    while(bp< b.size()) diff[s++] = b[bp++];
+
+
+
+}
+void MergeSort_Pairs_Comparison(vector<ll> &diff, ll s,ll e,ll &ans){
+    if(s>=e) return;
+    ll mid = s + (e-s)/2;
+    MergeSort_Pairs_Comparison(diff,s,mid,ans);
+    MergeSort_Pairs_Comparison(diff,mid+1,e,ans);
+
+    Merge(diff,s,e,ans);
+}
 
 
 
