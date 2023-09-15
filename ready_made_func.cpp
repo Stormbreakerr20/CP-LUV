@@ -1,7 +1,10 @@
-
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
 #define all(x) (x).begin(), (x).end()
 #define make_unique(x) sort(all((x))); (x).resize(unique(all((x))) - (x).begin())
 
+const int N = 2e5+5;
 // use sort(all(a));
 
 // inp
@@ -88,10 +91,56 @@ void MergeSort_Pairs_Comparison(vector<ll> &diff, ll s,ll e,ll &ans){
     Merge(diff,s,e,ans);
 }
 
+pair<ll,ll> CountDivisors(ll n ){
 
+    ll count_even=0,count_odd = -1; // as 1 we want to exclude
 
+    for(ll i = 1;i<=sqrt(n);i++){
+        if(!(n%i) && n/i >= i){
+            ll div1 = i,div2 = n/i;
 
+            if(div1&1) count_odd++;
+            else count_even++;
 
+            if(div2&1) count_odd++;
+            else count_even++;
+        }
+    }
+
+    ll total_div = count_even + count_odd;
+
+    return {count_odd, count_even};
+}
+
+bool isprime(ll n){
+    for(ll i = 2;i<= min(n,50000);i++) if(!(n%i)) return false;
+    return true;
+}
+
+pair<ll, ll> PrimeFactorization(ll n)
+{
+    if(isprime(n)) return {0,0};
+
+    ll count_even = 0, count_odd = 0; 
+
+    while(n%2 == 0 ) count_even++,n/=2;
+
+    ll i = 3;
+
+    while(n>1 && i<=n){
+        while((isprime(i)) && n%i == 0) count_odd++,n/=i;
+        i+=2;
+        
+    }
+
+    ll total_prime_div = count_even + count_odd;
+
+    return {count_odd, count_even};
+}
+
+//  Thus, if you apply logical AND operation to n&(n−1) , the result will be zero only if n is a power of two.
+// Note
+// x%(x-1) = 0 means x can be written as 2^x means x has no odd divisors
 
 
 
