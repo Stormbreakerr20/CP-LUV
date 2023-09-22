@@ -91,6 +91,7 @@ void MergeSort_Pairs_Comparison(vector<ll> &diff, ll s,ll e,ll &ans){
     Merge(diff,s,e,ans);
 }
 
+<<<<<<< HEAD
 pair<ll,ll> CountDivisors(ll n ){
 
     ll count_even=0,count_odd = -1; // as 1 we want to exclude
@@ -141,6 +142,14 @@ pair<ll, ll> PrimeFactorization(ll n)
 //  Thus, if you apply logical AND operation to n&(n−1) , the result will be zero only if n is a power of two.
 // Note
 // x%(x-1) = 0 means x can be written as 2^x means x has no odd divisors
+=======
+
+
+
+// Commited by Nani
+
+
+>>>>>>> bcdb4eb5e951c7bdae226c778cb072be03b98819
 
 
 
