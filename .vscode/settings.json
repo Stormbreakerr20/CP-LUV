@@ -5,5 +5,8 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "cmath": "cpp"
-    }
+    },
+    "cSpell.ignoreWords": [
+        "Sukarn"
+    ]
 }
