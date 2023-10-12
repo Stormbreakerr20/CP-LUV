@@ -37,6 +37,43 @@ void calculate_prime_flag()
         }
     }
 }
+int uniquePaths(int m, int n) {
+	// Write your code here.
+	vector<vector<int>> dp(m,vector<int> (n,-1));
+	for(int i = 0;i<m;i++){
+		for(int j = 0;j<n;j++){
+			if(i == 0 && j == 0) dp[i][j] = 1;
+			else{
+				int up = 0,left = 0;
+				if(i > 0) left = dp[i-1][j];
+				if(j > 0) up = dp[i][j-1];
+
+				dp[i][j] = up + left;
+			}
+		}
+	}
+	return dp[m-1][n-1];
+}
+
+double distance(pair<ll, ll> &a, pair<ll, ll> &b)
+{
+    return sqrt(pow(a.first - b.first, 2) + pow(a.second - b.second, 2));
+
+    // To get upto 10 decimal places
+    cout << setprecision(10);
+
+    if (d(o, a) == d(o, b))
+    {
+        cout << max(min(d(a, p), d(b, p)), d(o, a));
+    }
+}
+
+bool compare(pair<ll, ll> &a, pair<ll, ll> &b)
+{
+    if (a.second == b.second)
+        return a.first > b.first;
+    return a.second < b.second;
+}
 
 int check_perfect_square(long long n)
 {
@@ -184,3 +221,6 @@ pair<ll, ll> PrimeFactorization(ll n)
 //  GCD(a,b) = a*b/LCM(a,b)
 
 // s.erase(0,1); // delete 1 element from index 0
+
+// To get upto 10 decimal places
+cout << setprecision(10);
