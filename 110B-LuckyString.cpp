@@ -12,7 +12,7 @@ int main()
     cin >> n;
     
     string s = "abcd";
-
+ 
     if (n < 5)
     {
         cout << s.substr(0, n);
