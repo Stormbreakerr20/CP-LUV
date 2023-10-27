@@ -20,6 +20,20 @@ inline int nxt()
     return x;
 }
 
+void Euler_Sieve_PrimeFactors_count(ll n, unordered_map<ll, ll> &m)
+{
+    for (int j = 2; j <= sqrt(n); j++)
+    {
+        while (n % j == 0)
+        {
+            n /= j;
+            m[j]++;
+        }
+    }
+    if (n > 1)
+        m[n]++;
+}
+
 #define LIMIT 1000000
 long long i, j;
 long long prime_flag[LIMIT];

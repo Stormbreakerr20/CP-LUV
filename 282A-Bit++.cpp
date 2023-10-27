@@ -15,17 +15,13 @@ inline ll nxt()
 int main()
 {
     ll t = nxt();
+    ll x = 0;
     while(t--){
-        ll a = nxt();
-        ll b = nxt();
-        ll n = nxt();
-        vector<ll> k(n);
-        for(ll i =0;i<n;i++) k[i] = nxt();
-        ll ans = b-1;
-        b = 1;
-        for(ll i = 0;i<n;i++){
-            ans += min(k[i],a-1);
-        }
-        cout<<(ans + 1)<<endl;
+        string s;
+        cin>>s;
+        if(s[1] == '+') x++;
+        else x--;
     }
+    cout<<x<<endl;
+
 }
