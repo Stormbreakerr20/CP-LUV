@@ -34,3 +34,7 @@ int main(){
     cout<<ans%mod;
 
 }
+
+
+// divyanshu
+// gyg7g7g
