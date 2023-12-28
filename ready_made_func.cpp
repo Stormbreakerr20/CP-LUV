@@ -68,7 +68,21 @@ int uniquePaths(int m, int n) {
 	}
 	return dp[m-1][n-1];
 }
+void bfs(unordered_map<int,vector<int>> &g,ll i,vector<bool> &visited){
+    queue<ll> q;
+    q.push(i);
 
+    while(!q.empty()){
+        ll node = q.front();
+        q.pop();
+        visited[node] = 1;
+        for(auto k: g[node]){
+            if(!visited[k]){
+                q.push(k);
+            }
+        }
+    }
+}
 double distance(pair<ll, ll> &a, pair<ll, ll> &b)
 {
     return sqrt(pow(a.first - b.first, 2) + pow(a.second - b.second, 2));
@@ -230,7 +244,8 @@ pair<ll, ll> PrimeFactorization(ll n)
 
 //  Thus, if you apply logical AND operation to n&(n−1) , the result will be zero only if n is a power of two.
 // Note
-// x%(x-1) = 0 means x can be written as 2^x means x has no odd divisors
+// x&(x-1) = 0 means x can be written as 2^x means x has no odd divisors
+
 
 //  GCD(a,b) = a*b/LCM(a,b)
 
@@ -238,3 +253,12 @@ pair<ll, ll> PrimeFactorization(ll n)
 
 // To get upto 10 decimal places
 cout << setprecision(10);
+
+
+// (1<<4) == 2**x
+
+
+// last = n - 1
+// To go in cycle by v[last] steps toward left
+            // last += n - v[last];
+            // if(last >= n) last -= n;
