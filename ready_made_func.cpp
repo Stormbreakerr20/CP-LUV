@@ -252,7 +252,7 @@ pair<ll, ll> PrimeFactorization(ll n)
 // s.erase(0,1); // delete 1 element from index 0
 
 // To get upto 10 decimal places
-cout << setprecision(10);
+// cout << setprecision(10);
 
 
 // (1<<4) == 2**x
@@ -262,3 +262,8 @@ cout << setprecision(10);
 // To go in cycle by v[last] steps toward left
             // last += n - v[last];
             // if(last >= n) last -= n;
+
+
+// string(4,'a') ==> "aaaa"
+// s.find("luv") != string::npos // if "luv" is present in s
+// sort(v.rbegin(),v.rend()) reverse sort

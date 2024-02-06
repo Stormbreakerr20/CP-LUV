@@ -20,7 +20,8 @@
         "regex": "cpp",
         "valarray": "cpp",
         "stacktrace": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "complex": "cpp"
     },
     "cSpell.ignoreWords": [
         "Sukarn"
