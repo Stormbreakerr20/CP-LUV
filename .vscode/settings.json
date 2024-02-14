@@ -22,7 +22,8 @@
         "stacktrace": "cpp",
         "format": "cpp",
         "complex": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "random": "cpp"
     },
     "cSpell.ignoreWords": [
         "Sukarn"
