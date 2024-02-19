@@ -19,7 +19,13 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    ll n = nxt();
+    ll m = nxt();
+    vector<ll> v;
+    vector<bool> vis(n+1);
+    
 
+    cout<<v[m-1]<<endl;
 }
 int main()
 {

@@ -19,7 +19,25 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    ll n = nxt();
+    ll ones = 0;
+    bool tri = 0;
+    vector<vector<char>> v(n,vector<char> (n));
 
+    for(ll i = 0;i<n;i++)
+    {
+        ll cnt = 0;
+        for(ll j = 0;j<n;j++)
+        {
+            char inp;cin>>inp;
+            if(inp == '1') cnt++;
+        }
+        if(ones > 0 && (cnt != ones && cnt != 0)) tri = 1; 
+        else if(ones == 0 && cnt != 0) ones = cnt;
+    }
+
+    if(tri) cout<<"TRIANGLE"<<endl;
+    else cout<<"SQUARE"<<endl;
 }
 int main()
 {

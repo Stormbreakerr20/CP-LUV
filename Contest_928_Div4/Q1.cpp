@@ -19,6 +19,18 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    string s;cin>>s;
+    ll c1 = 0;
+    ll c2 = 0;
+    for(auto i:s)
+    {
+        if(i == 'A') c1++;
+        else c2++;
+    }
+
+    if(c1 > c2) cout<<"A"<<endl;
+    else cout<<"B"<<endl;
+
 
 }
 int main()
