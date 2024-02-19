@@ -267,3 +267,45 @@ pair<ll, ll> PrimeFactorization(ll n)
 // string(4,'a') ==> "aaaa"
 // s.find("luv") != string::npos // if "luv" is present in s
 // sort(v.rbegin(),v.rend()) reverse sort
+
+string add_string(string a, string b)
+{
+    ll s1 = a.size() - 1;
+    ll e1 = 0;
+    ll s2 = b.size() - 1;
+    ll e2 = 0;
+
+    while(a[e1] == '0') e1++;
+    while(b[e2] == '0') e2++;
+
+    ll carry = 0;
+    string ans = "";
+
+    while (s1 >= e1 && s2 >= e2)
+    {
+        ll dig = carry + (a[s1--] - '0') + (b[s2--] - '0');
+        carry = dig / 10;
+        dig = dig % 10;
+        ans = to_string(dig) + ans;
+    }
+    while (s1 >= e1)
+    {
+        ll dig = carry + (a[s1--] - '0');
+        carry = dig / 10;
+        dig = dig % 10;
+
+        ans = to_string(dig) + ans;
+    }
+    while (s2 >= e2)
+    {
+        ll dig = carry + (b[s2--] - '0');
+        carry = dig / 10;
+        dig = dig % 10;
+
+        ans = to_string(dig) + ans;
+    }
+
+    if(carry) ans = to_string(carry) + ans;
+
+    return ans;
+}
