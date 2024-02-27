@@ -24,7 +24,88 @@ void Euler_Sieve_PrimeFactors_count(ll n, unordered_map<ll, ll> &m)
     if (n > 1)
         m[n]++;
 }
+vector<int> prime_factors(int n)
+{
+    vector<int> factors;
+    for (int i = 2; i * i <= n; ++i)
+    {
+        while (n % i == 0)
+        {
+            factors.push_back(i);
+            n /= i;
+        }
+    }
+    if (n > 1)
+    {
+        factors.push_back(n);
+    }
+    return factors;
+}
 
+vector<int> common_prime_factors(int a, int b)
+{
+    vector<int> factors_a = prime_factors(a);
+    vector<int> factors_b = prime_factors(b);
+
+    unordered_map<int, int> freq_a, freq_b;
+
+    for (int factor : factors_a)
+    {
+        freq_a[factor]++;
+    }
+
+    for (int factor : factors_b)
+    {
+        freq_b[factor]++;
+    }
+
+    vector<int> common_factors;
+    for (auto &entry : freq_a)
+    {
+        if (freq_b.count(entry.first) > 0)
+        {
+            common_factors.push_back(entry.first);
+        }
+    }
+
+    return common_factors;
+}
+
+int distinct_k_values(int a, int b, int l)
+{
+    vector<int> common_factors = common_prime_factors(a, b);
+    vector<int> max_powers;
+
+    for (int factor : common_factors)
+    {
+        int max_power = 0;
+        while (l % int(pow(factor, max_power + 1)) == 0)
+        {
+            max_power++;
+        }
+        max_powers.push_back(max_power);
+    }
+
+    int result = 0;
+    for (int i = 1; i < (1 << max_powers.size()); ++i)
+    {
+        int lcm = 1;
+        int count_bits = __builtin_popcount(i);
+        for (int j = 0; j < max_powers.size(); ++j)
+        {
+            if ((i >> j) & 1)
+            {
+                lcm *= int(pow(common_factors[j], max_powers[j]));
+            }
+        }
+        if (count_bits % 2 == 1)
+        {
+            result += l / lcm;
+        }
+    }
+
+    return result;
+}
 #define LIMIT 1000000
 long long i, j;
 long long prime_flag[LIMIT];
