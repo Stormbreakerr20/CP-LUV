@@ -20,7 +20,21 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    ll n = nxt();
+    bool hashi = 0;
+    for(ll i = 1;i<=2*n;i++)
+    {   
+        if(i%2 != 0) hashi = !(hashi);
+        bool hash = hashi;
+        for(ll j = 1;j<=2*n;j++)
+        {
+            if(hash) cout<<"#";
+            else cout<<".";
 
+            if(j%2 == 0) hash = !(hash); 
+        }
+        cout<<nline;
+    }
 }
 int main()
 {

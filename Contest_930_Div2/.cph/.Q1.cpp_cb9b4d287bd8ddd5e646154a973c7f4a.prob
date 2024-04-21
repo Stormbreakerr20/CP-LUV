@@ -1,0 +1,1 @@
+{"name":"Local: Q1","url":"c:\\Users\\asus\\Desktop\\CP\\CP-LUV\\Contest_930_Div2\\Q1.cpp","tests":[{"id":1709217853622,"input":"4\n1\n4\n5\n120240229\n","output":"1\n4\n4\n67108864\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\asus\\Desktop\\CP\\CP-LUV\\Contest_930_Div2\\Q1.cpp","group":"local","local":true}

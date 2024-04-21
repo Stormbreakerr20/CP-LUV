@@ -20,6 +20,31 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    vector<pair<ll,ll>> v;
+    ll n = nxt();
+    ll p = nxt();
+    vector<ll> tell(n); f(i,n) cin>>tell[i];
+    vector<ll> cost(n); f(i,n) cin>>cost[i];
+
+    f(i,n)
+    {
+        if(cost[i] <= p) v.push_back({cost[i],tell[i]});
+    }
+
+    sort(all(v));
+    ll ans = p;
+    ll left = n-1;
+    for(auto i: v)
+    {
+        ll ppl = min(left,i.second);
+        ans = ans + ppl*i.first;
+        left = left - ppl;
+        if(left == 0) break;
+    }
+
+    ans += left*p; 
+
+    cout<<ans<<nline;
 
 }
 int main()

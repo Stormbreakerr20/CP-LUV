@@ -340,6 +340,7 @@ pair<ll, ll> PrimeFactorization(ll n)
 // s.find("luv") != string::npos // if "luv" is present in s
 // sort(v.rbegin(),v.rend()) reverse sort
 
+// strings add
 string add_string(string a, string b)
 {
     ll s1 = a.size() - 1;
@@ -395,6 +396,7 @@ ll Digit_SumUptoN_Helper(ll n, ll a[])
             msd * (1 + n % p) + 
             Digit_SumUptoN_Helper(n % p, a)); 
 } 
+// digit sum upto n
 ll Digit_SumUptoN(ll n) 
 { 
     ll d = (ll)(log10(n));
@@ -408,3 +410,24 @@ ll Digit_SumUptoN(ll n)
  
     return Digit_SumUptoN_Helper(n, a); 
 } 
+//  to binary
+long long toBin(ll n) {
+    string r;
+    while(n != 0) {
+        r = (n%2 == 0? "0":"1") + r;
+        n = n/2;
+    }
+    ll num = stoi(r)*1LL;
+    return num;
+}
+// is binary
+bool is_bin(ll n)
+{
+    while(n)
+    {
+        if(n%10 != 0 && n%10 != 1) return false;
+        n = n/10;
+    }
+
+    return true;
+}

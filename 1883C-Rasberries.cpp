@@ -20,7 +20,26 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    ll n = nxt();
+    ll k = nxt();
+    ll even = 0;
 
+    ll ans = INT_MAX;
+    f(i,n)
+    {
+        ll inp = nxt();
+        ans = min(ans, (k - (inp%k))%k);
+        even += !(inp&1);
+    }
+
+    if(k == 4){
+        if(even >= 2 || ans == 0) cout<<0<<nline;
+        else if(even == 1) cout<<1<<nline;
+        else cout<<min(ans,2ll)<<nline;
+        return;
+    }
+
+    cout<<ans<<nline;
 }
 int main()
 {

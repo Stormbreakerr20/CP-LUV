@@ -20,7 +20,24 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    string s;cin>>s;
+    ll hr = stoi(s.substr(0,2));
 
+    ll newhr = 0;
+    bool pm = 0;
+    if(hr == 0) newhr = 12;
+    else if(hr == 12){
+        newhr = 12;
+        pm = 1;
+    }
+    else if(hr >= 1 && hr <= 11) newhr = hr;
+    else{
+        newhr = hr - 12;
+        pm = 1;
+    }
+    string ans = (newhr < 10 ? "0" + to_string(newhr) : to_string(newhr)) + ":" + s.substr(3,2) + (pm ? " PM": " AM");
+
+    cout<<ans<<nline;
 }
 int main()
 {
@@ -29,4 +46,4 @@ int main()
     {
         func();
     }
-}
+}   

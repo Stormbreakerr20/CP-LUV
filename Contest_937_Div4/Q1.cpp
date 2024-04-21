@@ -20,7 +20,15 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    ll a = nxt();
+    ll b = nxt();
+    ll c = nxt();
 
+    if(b > a && b > c) cout<<"PEAK";
+    else if(b > a && c > b) cout<<"STAIR";
+    else cout<<"NONE";
+
+    cout<<nline;
 }
 int main()
 {

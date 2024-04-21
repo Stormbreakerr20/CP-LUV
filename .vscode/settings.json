@@ -23,7 +23,8 @@
         "format": "cpp",
         "complex": "cpp",
         "cstdlib": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "bitset": "cpp"
     },
     "cSpell.ignoreWords": [
         "Sukarn"

@@ -6,7 +6,6 @@ using namespace std;
 #define fr(i, n) for (ll i = (n)-1; i >= 0; i--)
 #define fex(i, s, n) for (ll i = s; i < (n); i++)
 #define fexr(i, s, n) for (ll i = (n)-1; i >= s; i--)
-string nline = "\n";
 inline ll nxt()
 {
     ll x;
@@ -20,7 +19,14 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
+    ll n = nxt();
+    vector<ll> v(n);
+    f(i,n) cin>>v[i];
+    sort(all(v));
 
+    ll ans = abs(v[0] - v[n-1]) + abs(v[0] - v[n-2]) + abs(v[1] - v[n-2]) + abs(v[1] - v[n-1]);
+
+    cout<<ans<<endl;
 }
 int main()
 {
