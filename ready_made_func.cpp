@@ -431,3 +431,9 @@ bool is_bin(ll n)
 
     return true;
 }
+
+ll highestPowerof2(ll n)
+{
+   ll p = (ll)log2(n);
+   return (ll)pow(2, p); 
+}

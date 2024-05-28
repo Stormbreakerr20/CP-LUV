@@ -21,14 +21,15 @@ void print(vector<ll> v, ll n)
 void func()
 {
     ll n = nxt();
+    ll m = nxt();
 
-    unordered_map<int,int> m;
-    for(ll i = 0;i<n;i++) m[nxt()]++;
-
-    ll ans = 0;
-    for(auto i:m) ans += (i.second/3);
-
-    cout<<ans<<nline;
+    if(m > n) {
+        cout<<"NO"<<nline;
+        return;
+    }
+    
+    if((m%2 == 0 && n%2 == 0) || (m%2 != 0 && n%2 != 0)) cout<<"YES"<<nline;
+    else cout<<"NO"<<nline;
 }
 int main()
 {
