@@ -6,9 +6,9 @@ using namespace std;
     sort(all((x)));    \
     (x).resize(unique(all((x))) - (x).begin())
 #define f(i, n) for (ll i = 0; i < (n); i++)
-#define fr(i, n) for (ll i = (n)-1; i >= 0; i--)
+#define fr(i, n) for (ll i = (n) - 1; i >= 0; i--)
 #define fex(i, s, n) for (ll i = s; i < (n); i++)
-#define fexr(i, s, n) for (ll i = (n)-1; i >= s; i--)
+#define fexr(i, s, n) for (ll i = (n) - 1; i >= s; i--)
 const int N = 2e5 + 5;
 
 void Euler_Sieve_PrimeFactors_count(ll n, unordered_map<ll, ll> &m)
@@ -123,33 +123,44 @@ void calculate_prime_flag()
         }
     }
 }
-int uniquePaths(int m, int n) {
-	// Write your code here.
-	vector<vector<int>> dp(m,vector<int> (n,-1));
-	for(int i = 0;i<m;i++){
-		for(int j = 0;j<n;j++){
-			if(i == 0 && j == 0) dp[i][j] = 1;
-			else{
-				int up = 0,left = 0;
-				if(i > 0) left = dp[i-1][j];
-				if(j > 0) up = dp[i][j-1];
+int uniquePaths(int m, int n)
+{
+    // Write your code here.
+    vector<vector<int>> dp(m, vector<int>(n, -1));
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (i == 0 && j == 0)
+                dp[i][j] = 1;
+            else
+            {
+                int up = 0, left = 0;
+                if (i > 0)
+                    left = dp[i - 1][j];
+                if (j > 0)
+                    up = dp[i][j - 1];
 
-				dp[i][j] = up + left;
-			}
-		}
-	}
-	return dp[m-1][n-1];
+                dp[i][j] = up + left;
+            }
+        }
+    }
+    return dp[m - 1][n - 1];
 }
-void bfs(unordered_map<int,vector<int>> &g,ll i,vector<bool> &visited){
+void bfs(unordered_map<int, vector<int>> &g, ll i, vector<bool> &visited)
+{
     queue<ll> q;
     q.push(i);
 
-    while(!q.empty()){
+    while (!q.empty())
+    {
         ll node = q.front();
         q.pop();
         visited[node] = 1;
-        for(auto k: g[node]){
-            if(!visited[k]){
+        for (auto k : g[node])
+        {
+            if (!visited[k])
+            {
                 q.push(k);
             }
         }
@@ -318,7 +329,6 @@ pair<ll, ll> PrimeFactorization(ll n)
 // Note
 // x&(x-1) = 0 means x can be written as 2^x means x has no odd divisors
 
-
 //  GCD(a,b) = a*b/LCM(a,b)
 
 // s.erase(0,1); // delete 1 element from index 0
@@ -326,15 +336,12 @@ pair<ll, ll> PrimeFactorization(ll n)
 // To get upto 10 decimal places
 // cout << setprecision(10);
 
-
 // (1<<4) == 2**x
-
 
 // last = n - 1
 // To go in cycle by v[last] steps toward left
-            // last += n - v[last];
-            // if(last >= n) last -= n;
-
+// last += n - v[last];
+// if(last >= n) last -= n;
 
 // string(4,'a') ==> "aaaa"
 // s.find("luv") != string::npos // if "luv" is present in s
@@ -348,8 +355,10 @@ string add_string(string a, string b)
     ll s2 = b.size() - 1;
     ll e2 = 0;
 
-    while(a[e1] == '0') e1++;
-    while(b[e2] == '0') e2++;
+    while (a[e1] == '0')
+        e1++;
+    while (b[e2] == '0')
+        e2++;
 
     ll carry = 0;
     string ans = "";
@@ -378,55 +387,60 @@ string add_string(string a, string b)
         ans = to_string(dig) + ans;
     }
 
-    if(carry) ans = to_string(carry) + ans;
+    if (carry)
+        ans = to_string(carry) + ans;
 
     return ans;
 }
 
-ll Digit_SumUptoN_Helper(ll n, ll a[]) 
-{ 
-    if (n < 10) 
-        return (n * (n + 1) / 2); 
-     
-    ll d = (ll)(log10(n)); 
-    ll p = (ll)(ceil(pow(10, d))); 
-    ll msd = n / p; 
-     
-    return (msd * a[d] + (msd * (msd - 1) / 2) * p + 
-            msd * (1 + n % p) + 
-            Digit_SumUptoN_Helper(n % p, a)); 
-} 
-// digit sum upto n
-ll Digit_SumUptoN(ll n) 
-{ 
+ll Digit_SumUptoN_Helper(ll n, ll a[])
+{
+    if (n < 10)
+        return (n * (n + 1) / 2);
+
     ll d = (ll)(log10(n));
- 
-    ll a[d + 1]; 
-    a[0] = 0; a[1] = 45;
-     
-    for(ll i = 2; i <= d; i++) 
-        a[i] = a[i - 1] * 10 + 45 * 
-               (ll)(ceil(pow(10, i - 1))); 
- 
-    return Digit_SumUptoN_Helper(n, a); 
-} 
+    ll p = (ll)(ceil(pow(10, d)));
+    ll msd = n / p;
+
+    return (msd * a[d] + (msd * (msd - 1) / 2) * p +
+            msd * (1 + n % p) +
+            Digit_SumUptoN_Helper(n % p, a));
+}
+// digit sum upto n
+ll Digit_SumUptoN(ll n)
+{
+    ll d = (ll)(log10(n));
+
+    ll a[d + 1];
+    a[0] = 0;
+    a[1] = 45;
+
+    for (ll i = 2; i <= d; i++)
+        a[i] = a[i - 1] * 10 + 45 *
+                                   (ll)(ceil(pow(10, i - 1)));
+
+    return Digit_SumUptoN_Helper(n, a);
+}
 //  to binary
-long long toBin(ll n) {
+long long toBin(ll n)
+{
     string r;
-    while(n != 0) {
-        r = (n%2 == 0? "0":"1") + r;
-        n = n/2;
+    while (n != 0)
+    {
+        r = (n % 2 == 0 ? "0" : "1") + r;
+        n = n / 2;
     }
-    ll num = stoi(r)*1LL;
+    ll num = stoi(r) * 1LL;
     return num;
 }
 // is binary
 bool is_bin(ll n)
 {
-    while(n)
+    while (n)
     {
-        if(n%10 != 0 && n%10 != 1) return false;
-        n = n/10;
+        if (n % 10 != 0 && n % 10 != 1)
+            return false;
+        n = n / 10;
     }
 
     return true;
@@ -434,6 +448,10 @@ bool is_bin(ll n)
 
 ll highestPowerof2(ll n)
 {
-   ll p = (ll)log2(n);
-   return (ll)pow(2, p); 
+    ll p = (ll)log2(n);
+    return (ll)pow(2, p);
 }
+
+// inverse module
+// a / b % m = a * inv(b) % m = a * pow(b , m-2) % m
+// inv(x) = pow(x , m-2)
