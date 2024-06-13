@@ -20,19 +20,29 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
-    ll n = nxt();
-    vector<ll> v(n);
+    string s;
+    cin>>s;
+    ll dig = s.size() - 1;
 
-    f(i,n) cin>>v[i];
+    ll lower = 0;
+    ll upper  = 0;
 
-    ll ans = INT_MAX;
-
-    f(i,n-1)
-    {
-        ll t = max(v[i],v[i+1]);
-        ans = min(t,ans);
+    bool zero = 0;
+    for(ll i = 1;i<s.size() - 1;i++){
+        if(s[i] == '0') {
+            zero = 1;
+            break;
+        }
     }
-    cout<<ans - 1<<nline;
+
+    for(ll i = 0;i<dig;i++) {
+        lower = lower * 10 + 5;
+        upper = upper * 10 + 9;
+    }
+
+    // cout<<upper<<" "<<lower<<nline;
+    if(zero || s[0] > '1' || s.back() == '9' || (stoll(s) > upper*2) || stoll(s) < lower*2) cout<<"NO"<<nline;
+    else cout<<"YES"<<nline; 
 }
 int main()
 {

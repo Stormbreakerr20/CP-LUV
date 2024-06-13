@@ -20,26 +20,25 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
-    ll a = nxt();
-    ll b = nxt();
+    ll x = nxt();
+    ll y = nxt();
+    ll z = nxt();
 
-    ll x = abs(a- b);
-    if(x&1) {
-        cout<<1<<nline;
-        return;
+    ll k = nxt();
+
+    ll ans = 0;
+
+    for(ll i = 1;i<=x;i++)
+    {
+        for(ll j = 1;j<=y;j++)
+        {
+            ll r = k / (i * j);
+            if (r <= z && i * j * r == k)
+                ans = max(ans,(x - i + 1) * (y - j + 1) * (z - r + 1));
+        }
     }
-    
-    ll ans = 1;
-    ll i = 1;
-    ll val = 1;
 
-    while(val <= x) {
-        val = 1<<i;
-        if(x%val == 0) ans = val;
-        i++;
-    }
-
-    cout<<(ans)<<nline;
+    cout<<ans<<nline;
 }
 int main()
 {

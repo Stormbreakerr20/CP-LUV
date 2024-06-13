@@ -14,33 +14,46 @@ inline ll nxt()
 }
 void print(vector<ll> v, ll n)
 {
-    f(i, n) cout << v[i] + 1;
-    cout << endl;
+    f(i, n) std::cout << v[i] + 1;
+    std::cout << endl;
 }
 int main()
 {
     ll n = nxt();
-    ll k = nxt();
+    ll W = nxt();    
 
-    vector<ll> v(n);f(i,n) v[i] = nxt();
+    vector<ll> v(n),w(n);
+    ll sumi = 0;
+    f(i,n) {
+        w[i] = nxt();
+        v[i] = nxt();
+        sumi += v[i];
+    }
 
-    vector<vector<ll>> dp(n + 1,vector<ll> (k + 1,0));
+    // index,value 
+    // we get min weight that can be achieved for tha value
+    vector<vector<ll>> dp(n + 1,vector<ll> (sumi + 1,INT_MAX));
 
-    f(i,n+1) dp[i][0] = 1;
+    f(i,n + 1) dp[i][0] = 0;
 
-    ll mod = 1e9 + 7;
-
-    for(ll sum = 1;sum<=k;sum++){
-        for(ll i = 1;i<n+1;i++){
-            // not pick
-            ll not_pick = (dp[i-1][sum]);
-            // pick
-            ll pick = 0;
-            if(sum - v[i-1]>=0) pick = (dp[i][sum - v[i-1]]);
-
-            dp[i][sum] = (pick + not_pick)%mod;
+    for(ll val = 1;val <= sumi;val++)
+    {
+        for(ll i = 1;i<=n;i++)
+        {
+            dp[i][val] = dp[i-1][val];
+            if(v[i - 1] <= val) dp[i][val] = min(dp[i][val],w[i - 1] + dp[i - 1][val - v[i - 1]]);
         }
     }
 
-    cout<<(dp[n][k])%mod<<endl;
+    ll ans = INT_MAX;
+    for(ll i = sumi;i>=0;i--)
+    {
+        if(dp[n][i] <= W) {
+            ans = i;
+            // std::cout<<dp[n][i]<<endl;
+            break;
+        } 
+    }
+
+    std::cout<< ans<<endl;
 }

@@ -26,8 +26,10 @@ int main()
 
     vector<ll> vals(n),w(n);
 
-    f(i,n) w[i] = nxt();
-    f(i,n) vals[i] = nxt();
+    f(i,n) {
+        w[i] = nxt(); 
+        vals[i] = nxt();
+    }
 
     // vector<vector<ll>> dp(n+1,vector<ll> (X+1,0));
     vector<ll> dp(X+1,0);

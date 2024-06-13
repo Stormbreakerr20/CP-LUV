@@ -336,7 +336,7 @@ pair<ll, ll> PrimeFactorization(ll n)
 // To get upto 10 decimal places
 // cout << setprecision(10);
 
-// (1<<4) == 2**x
+// (1<<x) == 2**x
 
 // last = n - 1
 // To go in cycle by v[last] steps toward left
@@ -455,3 +455,28 @@ ll highestPowerof2(ll n)
 // inverse module
 // a / b % m = a * inv(b) % m = a * pow(b , m-2) % m
 // inv(x) = pow(x , m-2)
+
+
+long long calculate(long long p, 
+                    long long q) 
+{ 
+    long long mod = 1000000007, expo; 
+    expo = mod - 2; 
+ 
+    // Loop to find the value 
+    // until the expo is not zero 
+    while (expo) { 
+ 
+        // Multiply p with q 
+        // if expo is odd 
+        if (expo & 1) { 
+            p = (p * q) % mod; 
+        } 
+        q = (q * q) % mod; 
+ 
+        // Reduce the value of 
+        // expo by 2 
+        expo >>= 1; 
+    } 
+    return p; 
+}  

@@ -20,26 +20,32 @@ void print(vector<ll> v, ll n)
 }
 void func()
 {
-    ll a = nxt();
-    ll b = nxt();
+    ll n = nxt();
 
-    ll x = abs(a- b);
-    if(x&1) {
-        cout<<1<<nline;
-        return;
+    vector<ll> a(n);
+
+    f(i,n) cin>>a[i];
+    ll lcm = a[0];
+
+    for(ll i = 1;i<n;i++)
+    {
+        lcm = (lcm * a[i])/(__gcd(a[i],lcm));
     }
+
+    // cout<<lcm<<nline;
+    ll sumi = 0;
+    f(i,n) sumi += (lcm/a[i]);
+
+    // cout<<sumi<<nline;
+
+    if(sumi < lcm) {
+        f(i,n) cout<<(lcm/a[i])<<" ";
+    }
+    else cout<<-1;
     
-    ll ans = 1;
-    ll i = 1;
-    ll val = 1;
+    cout<<nline;
 
-    while(val <= x) {
-        val = 1<<i;
-        if(x%val == 0) ans = val;
-        i++;
-    }
 
-    cout<<(ans)<<nline;
 }
 int main()
 {

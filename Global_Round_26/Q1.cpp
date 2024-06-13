@@ -21,18 +21,28 @@ void print(vector<ll> v, ll n)
 void func()
 {
     ll n = nxt();
+
     vector<ll> v(n);
-
     f(i,n) cin>>v[i];
-
-    ll ans = INT_MAX;
-
-    f(i,n-1)
+    ll diff = 0;
+    for(ll i = 1;i<n-1;i++)
     {
-        ll t = max(v[i],v[i+1]);
-        ans = min(t,ans);
+        if(v[i] != v[i+1]) diff++;
     }
-    cout<<ans - 1<<nline;
+
+    if(diff >= 1) {
+        cout<<"YES"<<nline<<"B";
+        f(i,n-1) cout<<"R";
+        cout<<nline;
+    }
+    else if(v[0] != v[1]) {
+        cout<<"YES"<<nline<<"BB";
+        f(i,n-2) cout<<"R";
+        cout<<nline;
+    }
+    else cout<<"NO"<<nline;
+
+
 }
 int main()
 {
