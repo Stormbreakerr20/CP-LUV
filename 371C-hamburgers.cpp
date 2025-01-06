@@ -3,63 +3,65 @@ using namespace std;
 #define ll long long
 #define all(x) (x).begin(), (x).end()
 #define f(i, n) for (ll i = 0; i < (n); i++)
-#define fr(i, n) for (ll i = (n)-1; i >= 0; i--)
+#define fr(i, n) for (ll i = (n) - 1; i >= 0; i--)
 #define fex(i, s, n) for (ll i = s; i < (n); i++)
-#define fexr(i, s, n) for (ll i = (n)-1; i >= s; i--)
+#define fexr(i, s, n) for (ll i = (n) - 1; i >= s; i--)
+string nline = "\n";
 inline ll nxt()
 {
     ll x;
     cin >> x;
     return x;
 }
-bool f_x(ll x, ll money, vector<pair<ll, ll>> v, ll req_b, ll req_c, ll req_s)
+void print(vector<ll> v, ll n)
 {
-    return max(0ll, x * req_b - v[0].first) * v[0].second + max(0ll, x * req_s - v[1].first) * v[1].second + max(0ll, x * req_c - v[2].first) * v[2].second <= money;
+    f(i, n) cout << v[i];
+    cout << endl;
+}
+void func()
+{
+    map<char,ll> m;
+    string st;
+    cin>>st;
+    for(auto i:st) m[i]++;
+
+    ll b = nxt();
+    ll s = nxt();
+    ll c = nxt();
+
+    ll pb = nxt();
+    ll ps = nxt();
+    ll pc = nxt();
+
+    ll x = nxt();
+
+    ll i = 0LL;
+    ll j = 1e15;
+
+    ll ans = 0;
+    while(i <= j)
+    {
+        ll mid = (i + j)>>1;
+
+        ll cost = 0;
+        cost += m['B'] ? max((mid*m['B'] - b)*pb,0LL) : 0;
+        cost += m['S'] ? max((mid*m['S'] - s)*ps,0LL) : 0;
+        cost += m['C'] ? max((mid*m['C'] - c)*pc,0LL) : 0;
+        if(cost <= x) {
+            // cout<<ans<<nline;
+            ans = mid;
+            i = mid + 1;
+        }
+        else j = mid - 1;
+    }
+
+    cout<<ans<<nline;
 }
 int main()
 {
-    ll req_b = 0;
-    ll req_c = 0;
-    ll req_s = 0;
-
-    string st;
-    cin >> st;
-    for (auto i : st)
+    ll t = 1;
+    while (t--)
     {
-        if (i == 'B')
-            req_b++;
-        else if (i == 'C')
-            req_c++;
-        else
-            req_s++;
+        func();
     }
-    vector<pair<ll, ll>> v(3, {0, 0});
-    // Have
-    for (int i = 0; i < 3; i++)
-        v[i].first = nxt();
-    // price
-    for (int i = 0; i < 3; i++)
-        v[i].second = nxt();
-
-    ll money = nxt();
-
-    ll e = 100000000000000;
-    ll s = 0;
-
-    ll ans = 0;
-
-    // function_x = sigma ( max( 0,x_cakes * req_i - have_i )*price_i )
-
-    while (s <= e)
-    {
-        ll mid = s + (e - s) / 2;
-        if (f_x(mid, money, v, req_b, req_c, req_s))
-        {
-            ans = mid;
-            s = mid + 1;
-        }
-        else
-            e = mid - 1;
-    }
-    cout << ans << endl;
 }

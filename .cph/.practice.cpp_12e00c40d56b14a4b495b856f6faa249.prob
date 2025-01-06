@@ -1,0 +1,1 @@
+{"name":"Local: practice","url":"c:\\Users\\asus\\Desktop\\CP\\CP-LUV\\practice.cpp","tests":[{"id":1731742620592,"input":"3\n5 1 \n4 1 6 10 2\n3 2 \n1 1 1\n8 3\n2 4 6 8 10 12 14 16","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\asus\\Desktop\\CP\\CP-LUV\\practice.cpp","group":"local","local":true}

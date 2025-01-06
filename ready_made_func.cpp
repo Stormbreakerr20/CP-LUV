@@ -335,6 +335,9 @@ pair<ll, ll> PrimeFactorization(ll n)
 
 // To get upto 10 decimal places
 // cout << setprecision(10);
+// To print 1 as 1.0000000000
+// double a = 1;
+// cout<<fixed<<setprecision(10)<<a;
 
 // (1<<x) == 2**x
 
